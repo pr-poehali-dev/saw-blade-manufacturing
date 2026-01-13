@@ -103,16 +103,18 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-background">
       {/* Навигация */}
-      <nav className="sticky top-0 z-50 bg-slate-900 text-white shadow-lg">
+      <nav className="sticky top-0 z-50 metal-texture border-b-2 border-primary/30">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="text-3xl">⚙️</div>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-primary rounded flex items-center justify-center text-2xl font-bold text-background border-2 border-background/50">
+                Т
+              </div>
               <div>
-                <h1 className="text-xl font-bold">ООО ПКФ "Технология"</h1>
-                <p className="text-xs text-slate-300">Производство пильных полотен</p>
+                <h1 className="text-xl font-bold text-foreground tracking-wide uppercase">ПКФ "Технология"</h1>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider">Industrial Solutions</p>
               </div>
             </div>
             <div className="hidden md:flex gap-6">
@@ -120,10 +122,10 @@ const Index = () => {
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`hover:text-sky-400 transition-colors ${activeSection === section ? 'text-sky-400' : ''}`}
+                  className={`text-sm uppercase tracking-wider font-semibold hover:text-primary transition-colors ${activeSection === section ? 'text-primary' : 'text-foreground/70'}`}
                 >
                   {section === 'home' && 'Главная'}
-                  {section === 'about' && 'О компании'}
+                  {section === 'about' && 'О нас'}
                   {section === 'products' && 'Продукция'}
                   {section === 'services' && 'Услуги'}
                   {section === 'calculator' && 'Калькулятор'}
@@ -134,58 +136,66 @@ const Index = () => {
             </div>
           </div>
         </div>
+        <div className="h-1 warning-stripes"></div>
       </nav>
 
       {/* Главная секция */}
-      <section id="home" className="py-20 bg-gradient-to-r from-slate-900 via-slate-800 to-sky-900 text-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 animate-fade-in">
-              <h2 className="text-5xl font-bold leading-tight">
-                Производство пильных полотен<br />
-                <span className="text-sky-400">для ленточных пил</span>
+      <section id="home" className="py-24 relative industrial-grid">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background"></div>
+        <div className="container mx-auto px-4 relative">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8 animate-fade-in">
+              <div className="inline-block">
+                <Badge className="bg-primary text-background text-xs uppercase tracking-wider px-4 py-2 font-bold">
+                  С 1995 года
+                </Badge>
+              </div>
+              <h2 className="text-6xl font-bold leading-tight uppercase">
+                Производство<br />
+                <span className="text-primary">пильных полотен</span>
               </h2>
-              <p className="text-xl text-slate-300">
-                Профессиональное оборудование, заточка инструмента и производство швейных столов с 1995 года
+              <div className="h-1 w-32 bg-primary"></div>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Профессиональное промышленное оборудование, заточка инструмента высокой точности и производство швейных столов
               </p>
               <div className="flex gap-4">
-                <Button size="lg" className="bg-sky-500 hover:bg-sky-600" onClick={() => scrollToSection('products')}>
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-background font-bold uppercase tracking-wider" onClick={() => scrollToSection('products')}>
                   <Icon name="Package" size={20} className="mr-2" />
-                  Каталог продукции
+                  Каталог
                 </Button>
-                <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-slate-900" onClick={() => scrollToSection('calculator')}>
+                <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-background font-bold uppercase tracking-wider" onClick={() => scrollToSection('calculator')}>
                   <Icon name="Calculator" size={20} className="mr-2" />
-                  Подбор полотна
+                  Подбор
                 </Button>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <Card className="bg-white/10 backdrop-blur border-white/20 text-white hover-scale">
+              <Card className="steel-plate rivet-border hover-scale">
                 <CardHeader>
-                  <div className="text-4xl mb-2">🏭</div>
-                  <CardTitle className="text-white">28+ лет</CardTitle>
-                  <CardDescription className="text-slate-300">на рынке</CardDescription>
+                  <div className="text-5xl mb-3">🏭</div>
+                  <CardTitle className="text-3xl font-bold text-primary">28+</CardTitle>
+                  <CardDescription className="text-muted-foreground uppercase text-xs tracking-wider">лет опыта</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="bg-white/10 backdrop-blur border-white/20 text-white hover-scale">
+              <Card className="steel-plate rivet-border hover-scale">
                 <CardHeader>
-                  <div className="text-4xl mb-2">⚡</div>
-                  <CardTitle className="text-white">5000+</CardTitle>
-                  <CardDescription className="text-slate-300">довольных клиентов</CardDescription>
+                  <div className="text-5xl mb-3">⚡</div>
+                  <CardTitle className="text-3xl font-bold text-primary">5000+</CardTitle>
+                  <CardDescription className="text-muted-foreground uppercase text-xs tracking-wider">клиентов</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="bg-white/10 backdrop-blur border-white/20 text-white hover-scale">
+              <Card className="steel-plate rivet-border hover-scale">
                 <CardHeader>
-                  <div className="text-4xl mb-2">🔧</div>
-                  <CardTitle className="text-white">500+</CardTitle>
-                  <CardDescription className="text-slate-300">видов продукции</CardDescription>
+                  <div className="text-5xl mb-3">🔧</div>
+                  <CardTitle className="text-3xl font-bold text-primary">500+</CardTitle>
+                  <CardDescription className="text-muted-foreground uppercase text-xs tracking-wider">изделий</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="bg-white/10 backdrop-blur border-white/20 text-white hover-scale">
+              <Card className="steel-plate rivet-border hover-scale">
                 <CardHeader>
-                  <div className="text-4xl mb-2">✨</div>
-                  <CardTitle className="text-white">100%</CardTitle>
-                  <CardDescription className="text-slate-300">гарантия качества</CardDescription>
+                  <div className="text-5xl mb-3">✨</div>
+                  <CardTitle className="text-3xl font-bold text-primary">100%</CardTitle>
+                  <CardDescription className="text-muted-foreground uppercase text-xs tracking-wider">качество</CardDescription>
                 </CardHeader>
               </Card>
             </div>
@@ -194,36 +204,39 @@ const Index = () => {
       </section>
 
       {/* О компании */}
-      <section id="about" className="py-20 bg-white">
+      <section id="about" className="py-24 bg-card">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-6">
-            <Badge className="bg-sky-500 text-white">О компании</Badge>
-            <h3 className="text-4xl font-bold">ООО ПКФ "Технология"</h3>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              Мы специализируемся на производстве высококачественных пильных полотен для ленточных пил, 
+          <div className="max-w-4xl mx-auto space-y-8">
+            <div className="text-center space-y-4">
+              <Badge className="bg-primary text-background uppercase tracking-wider font-bold">Производство</Badge>
+              <h3 className="text-5xl font-bold uppercase">ПКФ "Технология"</h3>
+              <div className="h-1 w-24 bg-primary mx-auto"></div>
+            </div>
+            <p className="text-lg text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto">
+              Специализируемся на производстве высококачественных пильных полотен для ленточных пил, 
               предоставляем услуги по заточке режущего инструмента и изготавливаем профессиональные швейные столы. 
-              За 28 лет работы мы зарекомендовали себя как надёжный партнёр для промышленных предприятий по всей России.
+              За 28 лет работы мы зарекомендовали себя как надёжный партнёр для промышленных предприятий.
             </p>
-            <div className="grid md:grid-cols-3 gap-6 mt-12">
-              <Card className="hover-scale">
+            <div className="grid md:grid-cols-3 gap-6 mt-16">
+              <Card className="steel-plate rivet-border hover-scale text-center">
                 <CardHeader>
-                  <Icon name="Award" size={40} className="text-sky-500 mb-4" />
-                  <CardTitle>Качество</CardTitle>
-                  <CardDescription>Сертифицированная продукция по ГОСТ</CardDescription>
+                  <Icon name="Award" size={48} className="text-primary mb-4 mx-auto" />
+                  <CardTitle className="uppercase text-lg tracking-wider">Качество</CardTitle>
+                  <CardDescription className="text-muted-foreground">Сертификация ГОСТ</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="hover-scale">
+              <Card className="steel-plate rivet-border hover-scale text-center">
                 <CardHeader>
-                  <Icon name="Zap" size={40} className="text-orange-500 mb-4" />
-                  <CardTitle>Скорость</CardTitle>
-                  <CardDescription>Быстрая обработка заказов</CardDescription>
+                  <Icon name="Zap" size={48} className="text-primary mb-4 mx-auto" />
+                  <CardTitle className="uppercase text-lg tracking-wider">Скорость</CardTitle>
+                  <CardDescription className="text-muted-foreground">Быстрая обработка</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="hover-scale">
+              <Card className="steel-plate rivet-border hover-scale text-center">
                 <CardHeader>
-                  <Icon name="Users" size={40} className="text-green-500 mb-4" />
-                  <CardTitle>Поддержка</CardTitle>
-                  <CardDescription>Консультации специалистов</CardDescription>
+                  <Icon name="Users" size={48} className="text-primary mb-4 mx-auto" />
+                  <CardTitle className="uppercase text-lg tracking-wider">Поддержка</CardTitle>
+                  <CardDescription className="text-muted-foreground">Консультации 24/7</CardDescription>
                 </CardHeader>
               </Card>
             </div>
@@ -232,65 +245,67 @@ const Index = () => {
       </section>
 
       {/* Продукция с фильтрацией */}
-      <section id="products" className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge className="bg-sky-500 text-white mb-4">Продукция</Badge>
-            <h3 className="text-4xl font-bold mb-4">Наш каталог</h3>
-            <p className="text-lg text-slate-600">Широкий ассортимент продукции для любых задач</p>
+      <section id="products" className="py-24 industrial-grid relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background"></div>
+        <div className="container mx-auto px-4 relative">
+          <div className="text-center mb-16 space-y-4">
+            <Badge className="bg-primary text-background uppercase tracking-wider font-bold">Каталог</Badge>
+            <h3 className="text-5xl font-bold uppercase">Продукция</h3>
+            <div className="h-1 w-24 bg-primary mx-auto"></div>
+            <p className="text-lg text-muted-foreground">Широкий ассортимент промышленного оборудования</p>
           </div>
 
           <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
-            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-8">
-              <TabsTrigger value="all">Всё</TabsTrigger>
-              <TabsTrigger value="saw-blades">Пильные полотна</TabsTrigger>
-              <TabsTrigger value="sharpening">Заточка</TabsTrigger>
-              <TabsTrigger value="tables">Швейные столы</TabsTrigger>
+            <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-4 mb-12 h-auto bg-card border-2 border-primary/30">
+              <TabsTrigger value="all" className="uppercase tracking-wider font-bold data-[state=active]:bg-primary data-[state=active]:text-background py-3">Всё</TabsTrigger>
+              <TabsTrigger value="saw-blades" className="uppercase tracking-wider font-bold data-[state=active]:bg-primary data-[state=active]:text-background py-3">Полотна</TabsTrigger>
+              <TabsTrigger value="sharpening" className="uppercase tracking-wider font-bold data-[state=active]:bg-primary data-[state=active]:text-background py-3">Заточка</TabsTrigger>
+              <TabsTrigger value="tables" className="uppercase tracking-wider font-bold data-[state=active]:bg-primary data-[state=active]:text-background py-3">Столы</TabsTrigger>
             </TabsList>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {filteredProducts.map(product => (
-                <Card key={product.id} className="hover-scale hover:shadow-xl transition-all">
+                <Card key={product.id} className="steel-plate rivet-border hover-scale hover:shadow-2xl transition-all">
                   <CardHeader>
-                    <div className="text-6xl text-center mb-4">{product.image}</div>
-                    <CardTitle className="text-lg">{product.name}</CardTitle>
-                    {product.type && <Badge variant="outline">{product.type}</Badge>}
+                    <div className="text-7xl text-center mb-4 grayscale opacity-80">{product.image}</div>
+                    <CardTitle className="text-base uppercase tracking-wide">{product.name}</CardTitle>
+                    {product.type && <Badge variant="outline" className="border-primary text-primary uppercase text-xs">{product.type}</Badge>}
                   </CardHeader>
-                  <CardContent className="space-y-2">
+                  <CardContent className="space-y-3">
                     {product.width && (
-                      <div className="flex justify-between text-sm">
-                        <span className="text-slate-600">Ширина:</span>
-                        <span className="font-semibold">{product.width}</span>
+                      <div className="flex justify-between text-sm border-b border-border pb-2">
+                        <span className="text-muted-foreground uppercase text-xs">Ширина:</span>
+                        <span className="font-bold text-primary">{product.width}</span>
                       </div>
                     )}
                     {product.thickness && (
-                      <div className="flex justify-between text-sm">
-                        <span className="text-slate-600">Толщина:</span>
-                        <span className="font-semibold">{product.thickness}</span>
+                      <div className="flex justify-between text-sm border-b border-border pb-2">
+                        <span className="text-muted-foreground uppercase text-xs">Толщина:</span>
+                        <span className="font-bold text-primary">{product.thickness}</span>
                       </div>
                     )}
                     {product.tooth && (
-                      <div className="flex justify-between text-sm">
-                        <span className="text-slate-600">Шаг зуба:</span>
-                        <span className="font-semibold">{product.tooth}</span>
+                      <div className="flex justify-between text-sm border-b border-border pb-2">
+                        <span className="text-muted-foreground uppercase text-xs">Шаг зуба:</span>
+                        <span className="font-bold text-primary">{product.tooth}</span>
                       </div>
                     )}
                     {product.material && (
-                      <div className="text-sm">
-                        <span className="text-slate-600">Для:</span>
-                        <p className="font-semibold">{product.material}</p>
+                      <div className="text-sm border-b border-border pb-2">
+                        <span className="text-muted-foreground uppercase text-xs block mb-1">Для:</span>
+                        <p className="font-semibold text-foreground">{product.material}</p>
                       </div>
                     )}
                     {product.description && (
-                      <p className="text-sm text-slate-600">{product.description}</p>
+                      <p className="text-sm text-muted-foreground">{product.description}</p>
                     )}
                     {product.price && (
-                      <p className="text-lg font-bold text-sky-600">{product.price}</p>
+                      <p className="text-xl font-bold text-primary">{product.price}</p>
                     )}
                     {product.size && (
-                      <p className="text-sm text-slate-600">Размер: {product.size}</p>
+                      <p className="text-sm text-muted-foreground uppercase text-xs">Размер: {product.size}</p>
                     )}
-                    <Button className="w-full mt-4 bg-sky-500 hover:bg-sky-600">
+                    <Button className="w-full mt-4 bg-primary hover:bg-primary/90 text-background font-bold uppercase tracking-wider">
                       <Icon name="ShoppingCart" size={16} className="mr-2" />
                       Заказать
                     </Button>
@@ -303,29 +318,30 @@ const Index = () => {
       </section>
 
       {/* Калькулятор подбора */}
-      <section id="calculator" className="py-20 bg-white">
+      <section id="calculator" className="py-24 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="bg-orange-500 text-white mb-4">Калькулятор</Badge>
-              <h3 className="text-4xl font-bold mb-4">Подбор пильного полотна</h3>
-              <p className="text-lg text-slate-600">Выберите параметры для расчёта оптимального полотна</p>
+            <div className="text-center mb-16 space-y-4">
+              <Badge className="bg-primary text-background uppercase tracking-wider font-bold">Калькулятор</Badge>
+              <h3 className="text-5xl font-bold uppercase">Подбор полотна</h3>
+              <div className="h-1 w-24 bg-primary mx-auto"></div>
+              <p className="text-lg text-muted-foreground">Автоматический расчёт оптимальных параметров</p>
             </div>
 
-            <Card className="shadow-xl">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Icon name="Calculator" size={24} className="text-sky-500" />
-                  Интерактивный калькулятор
+            <Card className="steel-plate rivet-border shadow-2xl">
+              <CardHeader className="border-b-2 border-primary/30">
+                <CardTitle className="flex items-center gap-3 uppercase tracking-wider">
+                  <Icon name="Calculator" size={28} className="text-primary" />
+                  Параметры подбора
                 </CardTitle>
-                <CardDescription>Заполните все поля для получения рекомендации</CardDescription>
+                <CardDescription className="text-muted-foreground">Заполните все поля для получения рекомендации</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-8 pt-8">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="material">Материал для резки</Label>
+                  <div className="space-y-3">
+                    <Label htmlFor="material" className="uppercase text-xs tracking-wider font-bold text-muted-foreground">Материал для резки</Label>
                     <Select value={selectedMaterial} onValueChange={setSelectedMaterial}>
-                      <SelectTrigger id="material">
+                      <SelectTrigger id="material" className="border-2 border-primary/30 h-12">
                         <SelectValue placeholder="Выберите материал" />
                       </SelectTrigger>
                       <SelectContent>
@@ -337,21 +353,22 @@ const Index = () => {
                     </Select>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="thickness">Толщина материала (мм)</Label>
+                  <div className="space-y-3">
+                    <Label htmlFor="thickness" className="uppercase text-xs tracking-wider font-bold text-muted-foreground">Толщина материала (мм)</Label>
                     <Input
                       id="thickness"
                       type="number"
                       placeholder="Введите толщину"
                       value={materialThickness}
                       onChange={(e) => setMaterialThickness(e.target.value)}
+                      className="border-2 border-primary/30 h-12"
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="equipment">Тип оборудования</Label>
+                  <div className="space-y-3 md:col-span-2">
+                    <Label htmlFor="equipment" className="uppercase text-xs tracking-wider font-bold text-muted-foreground">Тип оборудования</Label>
                     <Select value={equipmentType} onValueChange={setEquipmentType}>
-                      <SelectTrigger id="equipment">
+                      <SelectTrigger id="equipment" className="border-2 border-primary/30 h-12">
                         <SelectValue placeholder="Выберите станок" />
                       </SelectTrigger>
                       <SelectContent>
@@ -364,65 +381,64 @@ const Index = () => {
                 </div>
 
                 <Button 
-                  className="w-full bg-sky-500 hover:bg-sky-600" 
-                  size="lg"
+                  className="w-full bg-primary hover:bg-primary/90 text-background font-bold uppercase tracking-wider h-14 text-lg" 
                   onClick={calculateRecommendation}
                   disabled={!selectedMaterial || !materialThickness || !equipmentType}
                 >
-                  <Icon name="Sparkles" size={20} className="mr-2" />
-                  Подобрать полотно
+                  <Icon name="Sparkles" size={22} className="mr-2" />
+                  Рассчитать параметры
                 </Button>
 
                 {recommendation && (
-                  <div className="mt-8 p-6 bg-gradient-to-br from-sky-50 to-blue-50 rounded-lg border-2 border-sky-200 animate-fade-in">
-                    <div className="flex items-center gap-2 mb-4">
-                      <Icon name="CheckCircle2" size={24} className="text-green-500" />
-                      <h4 className="text-xl font-bold">Рекомендация готова!</h4>
+                  <div className="mt-8 p-8 bg-background/50 rounded border-2 border-primary animate-fade-in">
+                    <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-primary/30">
+                      <Icon name="CheckCircle2" size={28} className="text-primary" />
+                      <h4 className="text-2xl font-bold uppercase tracking-wider">Результат расчёта</h4>
                     </div>
                     
-                    <div className="space-y-4">
-                      <div className="bg-white p-4 rounded-lg">
-                        <p className="text-sm text-slate-600 mb-1">Рекомендуемое полотно</p>
-                        <p className="text-2xl font-bold text-sky-600">{recommendation.bladeType}</p>
+                    <div className="space-y-6">
+                      <div className="bg-card p-6 rounded border-2 border-primary/30">
+                        <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wider">Рекомендуемое полотно</p>
+                        <p className="text-3xl font-bold text-primary uppercase">{recommendation.bladeType}</p>
                       </div>
 
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div className="bg-white p-3 rounded-lg">
-                          <p className="text-xs text-slate-600">Ширина</p>
-                          <p className="text-lg font-semibold">{recommendation.width}</p>
+                        <div className="bg-card p-4 rounded border-2 border-primary/30 text-center">
+                          <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">Ширина</p>
+                          <p className="text-xl font-bold text-primary">{recommendation.width}</p>
                         </div>
-                        <div className="bg-white p-3 rounded-lg">
-                          <p className="text-xs text-slate-600">Толщина</p>
-                          <p className="text-lg font-semibold">{recommendation.thickness}</p>
+                        <div className="bg-card p-4 rounded border-2 border-primary/30 text-center">
+                          <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">Толщина</p>
+                          <p className="text-xl font-bold text-primary">{recommendation.thickness}</p>
                         </div>
-                        <div className="bg-white p-3 rounded-lg">
-                          <p className="text-xs text-slate-600">Шаг зуба</p>
-                          <p className="text-lg font-semibold">{recommendation.tooth}</p>
+                        <div className="bg-card p-4 rounded border-2 border-primary/30 text-center">
+                          <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">Шаг зуба</p>
+                          <p className="text-xl font-bold text-primary">{recommendation.tooth}</p>
                         </div>
-                        <div className="bg-white p-3 rounded-lg">
-                          <p className="text-xs text-slate-600">Скорость резки</p>
-                          <p className="text-lg font-semibold">{recommendation.speed}</p>
+                        <div className="bg-card p-4 rounded border-2 border-primary/30 text-center">
+                          <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">Скорость</p>
+                          <p className="text-xl font-bold text-primary">{recommendation.speed}</p>
                         </div>
                       </div>
 
-                      <div className="bg-white p-4 rounded-lg">
-                        <p className="font-semibold mb-2 flex items-center gap-2">
-                          <Icon name="Lightbulb" size={18} className="text-orange-500" />
-                          Рекомендации по эксплуатации:
+                      <div className="bg-card p-6 rounded border-2 border-primary/30">
+                        <p className="font-bold mb-4 flex items-center gap-2 uppercase tracking-wider text-lg">
+                          <Icon name="Lightbulb" size={20} className="text-primary" />
+                          Рекомендации по эксплуатации
                         </p>
-                        <ul className="space-y-1">
+                        <ul className="space-y-3">
                           {recommendation.tips.map((tip: string, index: number) => (
-                            <li key={index} className="text-sm text-slate-700 flex items-start gap-2">
-                              <span className="text-sky-500 mt-1">•</span>
+                            <li key={index} className="text-sm text-muted-foreground flex items-start gap-3 pb-3 border-b border-border last:border-0">
+                              <span className="text-primary mt-1 font-bold">▸</span>
                               <span>{tip}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
 
-                      <Button className="w-full bg-green-500 hover:bg-green-600" size="lg">
-                        <Icon name="Phone" size={18} className="mr-2" />
-                        Заказать консультацию специалиста
+                      <Button className="w-full bg-primary hover:bg-primary/90 text-background font-bold uppercase tracking-wider h-14 text-lg">
+                        <Icon name="Phone" size={20} className="mr-2" />
+                        Связаться со специалистом
                       </Button>
                     </div>
                   </div>
@@ -434,32 +450,37 @@ const Index = () => {
       </section>
 
       {/* Услуги */}
-      <section id="services" className="py-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge className="bg-green-500 text-white mb-4">Услуги</Badge>
-            <h3 className="text-4xl font-bold mb-4">Что мы предлагаем</h3>
+      <section id="services" className="py-24 industrial-grid relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background"></div>
+        <div className="container mx-auto px-4 relative">
+          <div className="text-center mb-16 space-y-4">
+            <Badge className="bg-primary text-background uppercase tracking-wider font-bold">Услуги</Badge>
+            <h3 className="text-5xl font-bold uppercase">Наши решения</h3>
+            <div className="h-1 w-24 bg-primary mx-auto"></div>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <Card className="hover-scale">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Card className="steel-plate rivet-border hover-scale text-center">
               <CardHeader>
-                <div className="text-5xl mb-4">🔪</div>
-                <CardTitle>Заточка инструмента</CardTitle>
-                <CardDescription>Профессиональная заточка режущего инструмента на современном оборудовании</CardDescription>
+                <div className="text-7xl mb-6 grayscale opacity-80">🔪</div>
+                <CardTitle className="uppercase tracking-wider text-xl mb-3">Заточка инструмента</CardTitle>
+                <div className="h-1 w-16 bg-primary mx-auto mb-4"></div>
+                <CardDescription className="text-muted-foreground">Профессиональная заточка режущего инструмента на станках CBN</CardDescription>
               </CardHeader>
             </Card>
-            <Card className="hover-scale">
+            <Card className="steel-plate rivet-border hover-scale text-center">
               <CardHeader>
-                <div className="text-5xl mb-4">⚙️</div>
-                <CardTitle>Производство полотен</CardTitle>
-                <CardDescription>Изготовление пильных полотен под заказ любых размеров</CardDescription>
+                <div className="text-7xl mb-6 grayscale opacity-80">⚙️</div>
+                <CardTitle className="uppercase tracking-wider text-xl mb-3">Производство полотен</CardTitle>
+                <div className="h-1 w-16 bg-primary mx-auto mb-4"></div>
+                <CardDescription className="text-muted-foreground">Изготовление пильных полотен под заказ любых размеров</CardDescription>
               </CardHeader>
             </Card>
-            <Card className="hover-scale">
+            <Card className="steel-plate rivet-border hover-scale text-center">
               <CardHeader>
-                <div className="text-5xl mb-4">🪑</div>
-                <CardTitle>Швейные столы</CardTitle>
-                <CardDescription>Производство профессиональных столов для швейного производства</CardDescription>
+                <div className="text-7xl mb-6 grayscale opacity-80">🪑</div>
+                <CardTitle className="uppercase tracking-wider text-xl mb-3">Швейные столы</CardTitle>
+                <div className="h-1 w-16 bg-primary mx-auto mb-4"></div>
+                <CardDescription className="text-muted-foreground">Производство профессиональных столов для швейного производства</CardDescription>
               </CardHeader>
             </Card>
           </div>
@@ -467,16 +488,17 @@ const Index = () => {
       </section>
 
       {/* Галерея */}
-      <section id="gallery" className="py-20 bg-white">
+      <section id="gallery" className="py-24 bg-card">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge className="bg-purple-500 text-white mb-4">Галерея</Badge>
-            <h3 className="text-4xl font-bold mb-4">Наше производство</h3>
+          <div className="text-center mb-16 space-y-4">
+            <Badge className="bg-primary text-background uppercase tracking-wider font-bold">Галерея</Badge>
+            <h3 className="text-5xl font-bold uppercase">Производство</h3>
+            <div className="h-1 w-24 bg-primary mx-auto"></div>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {[1,2,3,4,5,6].map(i => (
-              <Card key={i} className="hover-scale overflow-hidden">
-                <div className="aspect-video bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center text-6xl">
+              <Card key={i} className="steel-plate rivet-border hover-scale overflow-hidden">
+                <div className="aspect-video bg-gradient-to-br from-muted to-background flex items-center justify-center text-8xl grayscale opacity-60">
                   {['🏭','⚙️','🔧','💎','✨','🔩'][i-1]}
                 </div>
               </Card>
@@ -486,32 +508,37 @@ const Index = () => {
       </section>
 
       {/* Контакты */}
-      <section id="contacts" className="py-20 bg-slate-900 text-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge className="bg-white text-slate-900 mb-4">Контакты</Badge>
-            <h3 className="text-4xl font-bold mb-4">Свяжитесь с нами</h3>
+      <section id="contacts" className="py-24 metal-texture relative">
+        <div className="absolute inset-0 industrial-grid opacity-30"></div>
+        <div className="container mx-auto px-4 relative">
+          <div className="text-center mb-16 space-y-4">
+            <Badge className="bg-primary text-background uppercase tracking-wider font-bold">Контакты</Badge>
+            <h3 className="text-5xl font-bold uppercase">Связаться</h3>
+            <div className="h-1 w-24 bg-primary mx-auto"></div>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <Card className="bg-white/10 backdrop-blur border-white/20 text-white">
-              <CardHeader className="text-center">
-                <Icon name="Phone" size={40} className="mx-auto mb-4 text-sky-400" />
-                <CardTitle className="text-white">Телефон</CardTitle>
-                <CardDescription className="text-slate-300">+7 (XXX) XXX-XX-XX</CardDescription>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <Card className="steel-plate rivet-border text-center">
+              <CardHeader>
+                <Icon name="Phone" size={48} className="mx-auto mb-4 text-primary" />
+                <CardTitle className="uppercase tracking-wider">Телефон</CardTitle>
+                <div className="h-1 w-12 bg-primary mx-auto my-3"></div>
+                <CardDescription className="text-lg font-semibold text-foreground">+7 (XXX) XXX-XX-XX</CardDescription>
               </CardHeader>
             </Card>
-            <Card className="bg-white/10 backdrop-blur border-white/20 text-white">
-              <CardHeader className="text-center">
-                <Icon name="Mail" size={40} className="mx-auto mb-4 text-sky-400" />
-                <CardTitle className="text-white">Email</CardTitle>
-                <CardDescription className="text-slate-300">info@tehnologiya.ru</CardDescription>
+            <Card className="steel-plate rivet-border text-center">
+              <CardHeader>
+                <Icon name="Mail" size={48} className="mx-auto mb-4 text-primary" />
+                <CardTitle className="uppercase tracking-wider">Email</CardTitle>
+                <div className="h-1 w-12 bg-primary mx-auto my-3"></div>
+                <CardDescription className="text-lg font-semibold text-foreground">info@tehnologiya.ru</CardDescription>
               </CardHeader>
             </Card>
-            <Card className="bg-white/10 backdrop-blur border-white/20 text-white">
-              <CardHeader className="text-center">
-                <Icon name="MapPin" size={40} className="mx-auto mb-4 text-sky-400" />
-                <CardTitle className="text-white">Адрес</CardTitle>
-                <CardDescription className="text-slate-300">г. Москва, ул. Промышленная, 1</CardDescription>
+            <Card className="steel-plate rivet-border text-center">
+              <CardHeader>
+                <Icon name="MapPin" size={48} className="mx-auto mb-4 text-primary" />
+                <CardTitle className="uppercase tracking-wider">Адрес</CardTitle>
+                <div className="h-1 w-12 bg-primary mx-auto my-3"></div>
+                <CardDescription className="text-lg font-semibold text-foreground">г. Москва, ул. Промышленная, 1</CardDescription>
               </CardHeader>
             </Card>
           </div>
@@ -519,9 +546,9 @@ const Index = () => {
       </section>
 
       {/* Футер */}
-      <footer className="bg-slate-950 text-slate-400 py-8">
+      <footer className="bg-background border-t-2 border-primary/30 py-8">
         <div className="container mx-auto px-4 text-center">
-          <p>© 2024 ООО ПКФ "Технология". Все права защищены.</p>
+          <p className="text-muted-foreground uppercase text-xs tracking-wider">© 2024 ООО ПКФ "Технология". Все права защищены.</p>
         </div>
       </footer>
     </div>
